@@ -21,7 +21,6 @@ def Drawpaper(x, y):
     p.left(90)
     p.forward(170)
 
-
 def Drawrock(x, y):
     rock.penup()
     rock.goto(x, y)
