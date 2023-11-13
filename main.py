@@ -1,12 +1,38 @@
 import random
 import turtle
-t=turtle.Turtle()
+
 sOne = turtle.Turtle()
 sTwo = turtle.Turtle()
 t = turtle.Turtle()
 t.speed(0)
 p = turtle.Turtle()
 rock = turtle.Turtle()
+SC = turtle.Turtle()
+SC2 = turtle.Turtle()
+t.pencolor("blue")
+SC.pencolor("green")
+SC2.pencolor("purple")
+playerScoreTurtle = turtle.Turtle()
+playerScoreTurtle.pencolor("cyan")
+computerScoreTurtle = turtle.Turtle()
+computerScoreTurtle.pencolor("Cyan")
+
+
+def draw_score(x, y):
+    SC.penup()
+    SC.goto(x, y)
+    SC.backward(425)
+    SC.pendown()
+    SC.write("Score:", align='Left', font=("Arial", 25, 'normal'))
+
+
+def draw_score2(x, y):
+    SC2.penup()
+    SC2.goto(x, y)
+    SC2.forward(420)
+    SC2.pendown()
+    SC2.write("Score:", align='Right', font=("Arial", 25, 'normal'))
+
 
 def Drawpaper(x, y):
     p.setheading(0)
@@ -20,6 +46,7 @@ def Drawpaper(x, y):
     p.forward(100)
     p.left(90)
     p.forward(170)
+
 
 def Drawrock(x, y):
     rock.penup()
@@ -42,7 +69,7 @@ def DrawScissor(x, y):
     sOne.pendown()
     sOne.setheading(0)
     sTwo.penup()
-    sTwo.goto(x,y-80)
+    sTwo.goto(x, y - 80)
     sTwo.pendown()
     sTwo.setheading(0)
     counter = 1
@@ -214,8 +241,17 @@ def clearDrawings():
     sOne.clear()
     sTwo.clear()
 
+
 DrawPC(180, 200)
 DrawPlayer(-270, 200)
+draw_score(0, -100)
+draw_score2(0, -100)
+playerScoreTurtle.penup()
+playerScoreTurtle.goto(-310, -100)
+playerScoreTurtle.pendown()
+computerScoreTurtle.penup()
+computerScoreTurtle.goto(440, -100)
+computerScoreTurtle.pendown()
 
 
 # fourRounds function contains the code for the four rounds game mode.
@@ -226,6 +262,11 @@ def fourRounds():
 
     # Loop that will re run main game code, until either the player of the computer reaches a score of 4.
     while Playerscore < 4 and Computerscore < 4:
+        playerScoreTurtle.clear()
+        playerScoreTurtle.write(str(Playerscore), align='Left', font=("Arial", 25, 'normal'))
+        computerScoreTurtle.clear()
+        computerScoreTurtle.write(str(Computerscore), align='Right', font=("Arial", 25, 'normal'))
+        # Draw computer score
         Playerpick = input("Enter 1 for Rock, 2 for Paper, 3 for Scissor: ")
         clearDrawings()
         Computerpick = random.randint(1, 3)
@@ -290,6 +331,11 @@ def UnlimitedRounds():
     Playerscore = 0
     print("unlimited rounds")
     while True:
+        playerScoreTurtle.clear()
+        playerScoreTurtle.write(str(Playerscore), align='Left', font=("Arial", 25, 'normal'))
+        computerScoreTurtle.clear()
+        computerScoreTurtle.write(str(Computerscore), align='Right', font=("Arial", 25, 'normal'))
+        # Draw computer score
         Playerpick = input("Enter 1 for Rock, 2 for Paper, 3 for Scissor: ")
         clearDrawings()
         Computerpick = random.randint(1, 3)
